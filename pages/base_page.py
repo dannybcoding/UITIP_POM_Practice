@@ -28,6 +28,9 @@ class BasePage:
     def wait_for_clickable(self, by, locator):
         return self.wait.until(EC.element_to_be_clickable((by, locator)))
 
+    def find(self, by, value):
+        return self.driver.find_element(by, value)
+
     def wait_for_visible(self, by, locator):
         return self.wait.until(EC.visibility_of_element_located((by, locator)))
 
@@ -47,3 +50,14 @@ class BasePage:
             return self.wait_for_visible(by, locator).is_displayed()
         except Exception:
             return False
+
+    def scroll_into_view(self, locator):
+        element = self.find(*locator)
+
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block:'center'});",
+            element
+        )
+
+        return element
+
