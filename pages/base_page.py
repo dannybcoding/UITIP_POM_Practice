@@ -61,3 +61,18 @@ class BasePage:
 
         return element
 
+    def get_alert_text(self):
+        return self.wait.until(
+            EC.alert_is_present()
+        ).text
+
+    def accept_alert(self):
+        self.wait.until(
+            EC.alert_is_present()
+        ).accept()
+
+    def dismiss_alert(self):
+        self.wait.until(
+            EC.alert_is_present()
+        ).dismiss()
+
