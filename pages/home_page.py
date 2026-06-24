@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from pages.load_delay_page import LoadDelayPage
 
 
 class HomePage(BasePage):
@@ -19,6 +20,7 @@ class HomePage(BasePage):
     TEXT_INPUT_LINK = (By.LINK_TEXT, "Text Input")
     PROGRESS_BAR_LINK = (By.LINK_TEXT, "Progress Bar")
     SHADOW_DOM_LINK = (By.LINK_TEXT, "Shadow DOM")
+    LOAD_DELAY_LINK = (By.LINK_TEXT, "Load Delay")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -53,3 +55,7 @@ class HomePage(BasePage):
 
     def go_to_shadow_dom(self):
         self.click(*self.SHADOW_DOM_LINK)
+
+    def go_to_load_delay(self):
+        self.click(*self.LOAD_DELAY_LINK)
+        return LoadDelayPage(self.driver)
