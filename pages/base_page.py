@@ -76,3 +76,14 @@ class BasePage:
             EC.alert_is_present()
         ).dismiss()
 
+    def exists(self, locator):
+        return len(self.driver.find_elements(*locator)) > 0
+
+    def is_visible(self, locator):
+        elements = self.driver.find_elements(*locator)
+
+        return (
+                len(elements) > 0 and
+                elements[0].is_displayed()
+        )
+
