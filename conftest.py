@@ -19,7 +19,7 @@ def driver():
         service=ChromeService(ChromeDriverManager().install()),
         options=options
     )
-    driver.implicitly_wait(5)  # seconds
+    #driver.implicitly_wait(5)  # seconds
 
     yield driver  # Test runs here
 
