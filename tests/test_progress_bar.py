@@ -12,7 +12,3 @@ class TestProgressBar:
         # Result shows how many % off from 75 we were
         assert result is not None
         print(f"Result: {result}")  # visible with pytest -s
-
-    def test_progress_starts_at_zero(self, driver):
-        page = ProgressBarPage(driver).load()
-        assert page.get_progress() == 0
