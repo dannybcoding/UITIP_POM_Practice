@@ -27,3 +27,7 @@ class DynamicIdPage(BasePage):
 
     def get_heading(self):
         return self.get_text(*self.HEADING)
+    
+    def get_button_id(self):
+        button_element = self.find_element(*self.BUTTON)
+        return button_element.get_attribute("id")

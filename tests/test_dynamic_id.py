@@ -16,9 +16,13 @@ class TestDynamicId:
     def test_ids_differ_between_page_loads(self, driver):
         """Confirm the ID really does change, to understand WHY we avoid it."""
         page = DynamicIdPage(driver).load()
-        btn1_id = driver.find_element("css selector", "button.btn-primary").get_attribute("id")
 
+        btn1_id = page.get_button_id()
         driver.refresh()
-        btn2_id = driver.find_element("css selector", "button.btn-primary").get_attribute("id")
+        btn2_id = page.get_button_id()
+        
+        print(f"Button ID on first load: {btn1_id}")
+        print(f"Button ID after reload: {btn2_id}")
 
         assert btn1_id != btn2_id, "IDs should be different after reload"
+ 
